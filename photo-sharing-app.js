@@ -8,7 +8,7 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     photos: function () {
-      return Photos.find();
+      return Photos.find({}, {sort: {createdAt: -1}});
     }
   });
 
