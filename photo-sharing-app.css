@@ -12,3 +12,8 @@ body {
 .unsubmitted-photo {
   width: 50%;
 }
+
+.camera-popup img.photo-preview {
+  margin-bottom: 10px;
+  width: 100%;
+}
