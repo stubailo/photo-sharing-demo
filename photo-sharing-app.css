@@ -8,3 +8,7 @@ body {
 .photo-card {
   margin-top: 20px;
 }
+
+.unsubmitted-photo {
+  width: 50%;
+}

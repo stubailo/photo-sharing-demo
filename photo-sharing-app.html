@@ -3,29 +3,34 @@
 </head>
 
 <body>
-  <h1>Photo sharing app</h1>
+  <span class="pull-right">{{> loginButtons align="right"}}</span>
 
-  {{> loginButtons}}
+  <h3>Photo sharing app</h3>  
 
   {{#each photos}}
     {{> photoCard}}
   {{/each}}
 
-  {{> postPhoto}}
+  {{#if currentUser}}
+    {{> postPhoto}}
+  {{else}}
+    <div class="well">
+      Log in to post a photo!
+    </div>
+  {{/if}}
 </body>
 
 <template name="photoCard">
-  <div class="photo-card">
+  <div class="thumbnail">
     <img src="{{data}}" />
     <div class="caption">
       {{caption}}
       <em>by {{username}}</em>
 
       {{#if currentUser}}
-        <button class="like">
-          &lt;3
-          ({{likedBy.length}})
-        </button>
+        <a href="#" class="like btn btn-sm btn-primary pull-right">
+          <i class="fa fa-heart"></i> {{likedBy.length}}
+        </a>
       {{/if}}
     </div>
   </div>
@@ -34,15 +39,24 @@
 <template name="postPhoto">
   <form class="add-photo">
     <h3>Post a photo</h3>
-    <a href="#" class="take-photo">Take a photo</a>
+    <p>
+      <a href="#" class="take-photo btn btn-primary">
+        <i class="fa fa-camera"></i>
+        Take a photo
+      </a>
+    </p>
 
     {{#if unsubmittedPhoto}}
-      <img src="{{unsubmittedPhoto}}" />
+      <p>
+        <img src="{{unsubmittedPhoto}}" class="unsubmitted-photo" />
+      </p>
     {{/if}}
 
-    <input type="text" name="caption"
-      placeholder="type a caption for your new photo!"/>
+    <p>
+      <input type="text" name="caption" class="form-control"
+        placeholder="type a caption for your new photo!"/>
+    </p>
 
-    <button>Post</button>
+    <button class="btn btn-success">Post</button>
   </form>
 </template>

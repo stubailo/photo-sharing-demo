@@ -13,7 +13,9 @@ if (Meteor.isClient) {
   });
 
   Template.photoCard.events({
-    "click .like": function () {
+    "click .like": function (event) {
+      event.preventDefault();
+
       Photos.update(this._id, {
         $addToSet: {
           likedBy: Meteor.userId()

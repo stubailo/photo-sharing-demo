@@ -10,4 +10,5 @@ insecure
 mdg:camera
 accounts-ui
 accounts-password
-meteoric:ionic
+twbs:bootstrap
+fortawesome:fontawesome
