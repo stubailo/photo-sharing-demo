@@ -1,6 +1,6 @@
 # Meteor photo sharing app demo
 
-A simple photo sharing app we will build at the workshop for the NYUAD hackathon.
+A simple photo sharing app we will build at the Meteor introduction workshop for the NYUAD hackathon. Feel free to use it as a starting point for your app!
 
 The app includes taking and uploading photos to a realtime stream, and the ability to like photos!
 

@@ -2,16 +2,19 @@
 Photos = new Mongo.Collection("photos");
 
 if (Meteor.isClient) {
+  // configure accounts UI to have username instead of email
   Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
+    passwordSignupFields: 'USERNAME_ONLY'
   });
 
+  // return a sorted database query to be displayed in the body
   Template.body.helpers({
     photos: function () {
       return Photos.find({}, {sort: {createdAt: -1}});
     }
   });
 
+  // capture a click event for the like button
   Template.photoCard.events({
     "click .like": function (event) {
       event.preventDefault();
@@ -24,6 +27,7 @@ if (Meteor.isClient) {
     }
   });
 
+  // have a temporary variable for the photo about to be submitted
   Template.postPhoto.helpers({
     unsubmittedPhoto: function () {
       return Session.get("unsubmittedPhoto");
@@ -31,6 +35,7 @@ if (Meteor.isClient) {
   });
 
   Template.postPhoto.events({
+    // capture the event for submitting the photo
     "submit form": function (event) {
       var form = event.target;
       var caption = form.caption.value;
@@ -49,6 +54,7 @@ if (Meteor.isClient) {
       return false;
     },
 
+    // capture the event for taking a photo to be submitted
     "click .take-photo": function () {
       MeteorCamera.getPicture({
         width: 400,
