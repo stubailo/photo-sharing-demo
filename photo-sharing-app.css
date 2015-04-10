@@ -1,0 +1,10 @@
+/* CSS declarations go here */
+
+body {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.photo-card {
+  margin-top: 20px;
+}

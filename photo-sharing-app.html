@@ -1,0 +1,48 @@
+<head>
+  <title>photo-sharing-app</title>
+</head>
+
+<body>
+  <h1>Photo sharing app</h1>
+
+  {{> loginButtons}}
+
+  {{#each photos}}
+    {{> photoCard}}
+  {{/each}}
+
+  {{> postPhoto}}
+</body>
+
+<template name="photoCard">
+  <div class="photo-card">
+    <img src="{{data}}" />
+    <div class="caption">
+      {{caption}}
+      <em>by {{username}}</em>
+
+      {{#if currentUser}}
+        <button class="like">
+          &lt;3
+          ({{likedBy.length}})
+        </button>
+      {{/if}}
+    </div>
+  </div>
+</template>
+
+<template name="postPhoto">
+  <form class="add-photo">
+    <h3>Post a photo</h3>
+    <a href="#" class="take-photo">Take a photo</a>
+
+    {{#if unsubmittedPhoto}}
+      <img src="{{unsubmittedPhoto}}" />
+    {{/if}}
+
+    <input type="text" name="caption"
+      placeholder="type a caption for your new photo!"/>
+
+    <button>Post</button>
+  </form>
+</template>
